@@ -1,0 +1,7 @@
+[19-Aug-2014 14:04:07 Asia/Bangkok] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')' in /home/nhmayugz/public_html/application/controllers/admin/category.php on line 86
+[19-Aug-2014 14:04:09 Asia/Bangkok] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')' in /home/nhmayugz/public_html/application/controllers/admin/category.php on line 86
+[09-Sep-2014 23:01:05 Asia/Bangkok] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 122880 bytes) in /home/nhmayugz/public_html/system/core/CodeIgniter.php on line 267
+[06-May-2017 08:21:23 Asia/Ho_Chi_Minh] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 12288 bytes) in /home/nhmayugz/public_html/system/database/DB_active_rec.php on line 1754
+[11-Jun-2017 14:40:18 Asia/Ho_Chi_Minh] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 13280 bytes) in /home/nhmayugz/public_html/system/database/DB_active_rec.php on line 1824
+[23-Jun-2017 19:41:29 Asia/Ho_Chi_Minh] PHP Fatal error:  Out of memory (allocated 786432) (tried to allocate 13280 bytes) in /home/nhmayugz/public_html/system/database/DB_active_rec.php on line 1824
+[19-Jul-2017 21:14:11 Asia/Ho_Chi_Minh] PHP Fatal error:  Out of memory (allocated 262144) (tried to allocate 12288 bytes) in /home/nhmayugz/public_html/index.php on line 163
