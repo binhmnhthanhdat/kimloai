@@ -20,7 +20,7 @@
 					<? if($pro->khuyenmai!="")
                     {
                     ?>
-                    <span><strong>Khuyến mại :</strong>  <? echo $pro->khuyenmai;?></span>
+                 
 					<?
                     }
                     ?>

@@ -12,7 +12,7 @@
 				<a href="<?=site_url('xem-san-pham/'. $pro->id .'-'. $pro->catid .'-' . $pro->p_name_alias);?>"><img style="margin-top: 13px" width="140" height="135" src="<?=base_url();?><?=$pro->p_image_thumb;?>" alt="<?=$pro->p_name;?>" ></a>				                                
 				<p>
 					<a href="<?=site_url('xem-san-pham/'. $pro->id .'-'. $pro->catid .'-' . $pro->p_name_alias);?>"><?=$pro->p_name;?></a>
-					<span><strong>Khuyến mại :</strong> <?=$pro->khuyenmai;?></span><br>
+				
 					<span>Giá : <strong>  <?  echo number_format($pro->gia); ?></strong></span>
 				</p>
 				<a class="last-child" href="<?=site_url('xem-san-pham/'. $pro->id .'-'. $pro->catid .'-' . $pro->p_name_alias);?>">CHI TIẾT</a>	
