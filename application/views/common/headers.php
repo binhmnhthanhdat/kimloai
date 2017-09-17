@@ -4,7 +4,7 @@
         <form action="<? echo base_url();?>san-pham/tim-kiem" method="POST">	                	
             <span></span>
             <div>
-                <input type="text" name="keyword" value="Searching keyword..." onfocus="if (this.value == & #39; Searching keyword... & #39; ) this.value = & #39; & #39; ;" onblur="if (this.value == & #39; & #39; ) this.value = & #39; Searching keyword... & #39; ;">
+                <input type="text" name="keyword" value="" placeholder="Searching keyword...">
                 <p>
                     <span></span>
                     <select name="catpro">

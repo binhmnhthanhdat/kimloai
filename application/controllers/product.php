@@ -82,7 +82,7 @@ class Product extends Public_controller {
 		$data['render_path'] = array('Trang chủ' => site_url('trang-chu'), 'Danh sách sản phẩm' => site_url('#'));
 		$this->site_title = 'Danh Sách Sản phẩm';
 		
-		$data['products'] = $this->product->get_all_pro(array('id','p_name','p_name_alias', 'status','p_image_thumb','catid','gia','khuyenmai','noibat','p_description'), $catpro, $keyword, null, null, array('id' => 'desc'), array('max' => 30, 'begin' => 0));
+		$data['products'] = $this->product->get_all_pro(array('id','p_name','p_name_alias', 'status','p_image_thumb','catid','gia','khuyenmai','noibat','p_description'), $catpro, $keyword, null,null,null, null, array('id' => 'desc'), array('max' => 30, 'begin' => 0));
 		
 		if($this->input->is_ajax_request())
 		{
