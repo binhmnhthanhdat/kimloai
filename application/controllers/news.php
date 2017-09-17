@@ -79,7 +79,9 @@ class News extends Public_controller {
 
         $data['render_path'] = array('Trang chủ' => site_url('trang-chu'), 'Tin tức' => site_url('tin-tuc'));
 
-        $this->site_title = $this->tin->get_title($id);
+        $this->site_title = $this->tin->get_title($id)['title'];
+        $this->meta_key = $this->tin->get_title($id)['metades'];
+        $this->meta_desc = $this->tin->get_title($id)['metakey'];
         $data['news'] = $this->tin->read($id);
         $cat_id = $this->tin->read($id)->cat_id;
         $data['other_news'] = $this->tin->getList(array('id', 'title', 'create_date'), array('id !=' => $id, 'cat_id' => $cat_id), array('id' => 'DESC'), array('max' => 5, 'begin' => 0))->result();

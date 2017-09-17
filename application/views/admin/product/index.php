@@ -38,11 +38,13 @@
 	// Function search
 	function do_search() {
 		var _status = $('#status_pro').val();
+		var _noibat = $('#noibat').val();
+		var _khuyenmai = $('#khuyenmai').val();
 		var _cat = $('#cat_pro').val();
 		var _name = $('#name_pro').val();
 		var url = index_url + 'admin/product/';
 		
-		url = url + '?cat=' + _cat + '&name=' + _name + '&status=' + _status;
+		url = url + '?cat=' + _cat + '&name=' + _name + '&status=' + _status+ '&noibat=' + _noibat+ '&khuyenmai=' + _khuyenmai;
 		
 		window.location.href = url;
 	}
@@ -77,6 +79,8 @@
                                 <td width="69" class="left"><a href="#">Hình ảnh</a></td>
                               <td width="419" class="left"><a href="#">Tên sản phẩm</a></td>
                               <td width="218" class="left"><a href="#">Thuộc danh mục</a></td>
+                              <td width="125" class="left"><a href="#">Nổi bật</a></td>
+                              <td width="125" class="left"><a href="#">Khuyến mại</a></td>
                                 <td width="124" class="left"><a href="#">Trạng thái</a></td>
                                 <td width="205" class="right">Action</td>
             </tr>
@@ -97,13 +101,24 @@
                                     </select>
                                 </td>
                                 <td>
+                                	<select id="noibat" name="noibat">
+                                    	<option value="" selected></option>
+                                        <option value="1" <?php if($_noibat == 1) { echo "selected"; } ?>>Enbale</option>
+                                        <option value="0" <?php if($_noibat == 0) { echo "selected"; };?>>Disable</option>
+                                    </select>
+                                </td>
+                                <td>
+                                	<select id="khuyenmai" name="khuyenmai">
+                                    	<option value="" selected></option>
+                                        <option value="1" <?php if($_khuyenmai == 1) { echo "selected"; } ?>>Enbale</option>
+                                        <option value="0" <?php if($_khuyenmai == 0) { echo "selected"; };?>>Disable</option>
+                                    </select>
+                                </td>
+                                <td>
                                 	<select id="status_pro" name="status_pro">
                                     	<option value="" selected></option>
                                         <option value="1" <?php if($_status == 1) { echo "selected"; } ?>>Enbale</option>
-                                        }
-                                        }
                                         <option value="0" <?php if($_status == 0) { echo "selected"; };?>>Disable</option>
-                                        }
                                     </select>
                                 </td>
                                 <td class="right"><a class="button" onclick="do_search();">Lọc sản phẩm</a></td>
@@ -115,6 +130,8 @@
                                 <td class="left"><img src="<?=base_url();?><?=$product->p_image_thumb;?>" width="50" height="50" style="padding:2px; border:1px solid #cccccc;"/></td>
                                 <td class="left"><?=$product->p_name;?></td>
                                 <td class="left"><?=$this->cat->get_name($product->catid);?></td>
+                                <td class="left"><?=($product->noibat == 1) ?  "Enable" : "Disable";?></td>
+                                <td class="left"><?=($product->khuyenmai == 1) ?  "Enable" : "Disable";?></td>
                                 <td class="left"><?=($product->status == 1) ?  "Enable" : "Disable";?></td>
                                 <td class="right">
                                     <a href="<?=$url_edit;?>/<?=$product->id;?>">Edit</a> :: <a href="<?=$url_del;?>/<?=$product->id;?>" title="Xóa User này" id="action_del_<?=$product->id;?>" onclick="do_del(<?=$product->id;?>); return false;">Delete</a>

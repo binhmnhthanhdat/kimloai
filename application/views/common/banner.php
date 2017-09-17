@@ -50,7 +50,12 @@ if($layhotro->num_rows()>0)
 	
 </div>
 <div>
-    <img src="<? echo base_url();?>images/lienhe.png" width="250" height="260"/>
+    <?php
+        $sql = "select * from images ";
+        $images = $this->db->query($sql);
+        $kqimage = $images->row();
+        ?>
+    <img src="<? echo base_url();?><?php if (isset($kqimage->img)) { echo (($kqimage->img));} ?>" width="250" height="262"/>
 </div>
 <?php endif;?>
 <script type="text/javascript">

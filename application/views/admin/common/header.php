@@ -27,12 +27,6 @@
                         <li><a href="<?=$this->index_url;?>admin/product">Sản phẩm</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="top">Dịch vụ</a>
-                	<ul>
-                    	<li><a href="<?=$this->index_url;?>admin/category_service">Danh mục</a></li>
-                        <li><a href="<?=$this->index_url;?>admin/service">Dịch vụ</a></li>
-                    </ul>
-                </li>
                 <li><a href="#" class="top">Tin tức</a>
                 	<ul>
                     	<li><a href="<?=$this->index_url;?>admin/news">Tin tức</a></li>
@@ -48,6 +42,7 @@
                         <li><a href="<?=$this->index_url;?>admin/khachhang">Quản lý Khách hàng</a></li>
                         <li><a href="<?=$this->index_url;?>admin/groupmenufooter">Quản lý Danh mục Footer</a></li>
                         <li><a href="<?=$this->index_url;?>admin/menufooter">Quản lý tin Footer</a></li>
+                        <li><a href="<?=$this->index_url;?>admin/slide/lienhe">Ảnh banner (Liên hệ)</a></li>
                     </ul>
                 </li>
                 

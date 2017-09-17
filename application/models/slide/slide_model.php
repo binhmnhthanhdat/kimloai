@@ -29,7 +29,6 @@ class slide_model extends CI_Model {
 		$this->db->set('ord', $data['ord']);
 
 		if($this->db->insert($this->table)) return TRUE; else return FALSE;
-		
 	}
 	
 	
@@ -47,8 +46,48 @@ class slide_model extends CI_Model {
 		if($this->db->update($this->table)) return TRUE; else return FALSE;
 		
 	}
-	
-	
+	function updateImage($id, $data) {
+		
+		$this->db->where('id', $id);
+		$this->db->set('img', $data['image']);
+		
+		if($this->db->update('images')) return TRUE; else return FALSE;
+		
+	}
+	function selectImage($where = null, $order = null, $limit = null) {
+		
+		if($where !=null) {
+			foreach($where as $key => $val) {
+				if($key[0] =='?')
+				{
+					$this->db->where_in(substr($key, 1), $val);
+				} elseif($key[0] =='!')
+				{
+					$this->db->where_not_in(substr($key, 1), $val);
+				} else {
+					$this->db->where($key, $val);
+				}
+			}
+		}
+		
+		if($order != null) {
+			foreach($order as $key => $val) {
+				$this->db->order_by($key, $val);
+			}
+		}
+		
+		if($limit != null)
+		{
+			$this->db->limit($limit['max'], $limit['begin']);
+		}
+		
+		$q = $this->db->get('images');
+		
+		return $q;
+		
+		$q->free_result();
+		
+	}
 	function get_by_id($id) {
 		
 		$q = $this->db->get_where($this->table, array('id' => $id));

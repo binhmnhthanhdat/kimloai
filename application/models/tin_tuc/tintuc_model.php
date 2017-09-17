@@ -20,6 +20,8 @@ class Tintuc_model extends CI_Model {
 
     public function add($data) {
         $this->db->set('title', $data['title']);
+        $this->db->set('metades', $data['metades']);
+        $this->db->set('metakey', $data['metakey']);
         $this->db->set('intro', $data['intro']);
         $this->db->set('content', $data['content']);
         $this->db->set('image', $data['image']);
@@ -37,6 +39,8 @@ class Tintuc_model extends CI_Model {
     public function update($id, $data) {
         $this->db->where('id', $id);
         $this->db->set('title', $data['title']);
+        $this->db->set('metades', $data['metades']);
+        $this->db->set('metakey', $data['metakey']);
         $this->db->set('intro', $data['intro']);
         $this->db->set('content', $data['content']);
         $this->db->set('image', $data['image']);
@@ -73,11 +77,16 @@ class Tintuc_model extends CI_Model {
 
     public function get_title($id) {
         $this->db->where('id', $id);
-        $this->db->select('title');
+        $this->db->select('title,metades,metakey');
         $q = $this->db->get($this->table);
         $result = $q->row();
         if ($q->num_rows() > 0) {
-            return $result->title;
+            return array (
+                'title' => $result->title,
+                'metades' => $result->metades,
+                'metakey' => $result->metakey,
+                );
+            
         } else {
             return FALSE;
         }

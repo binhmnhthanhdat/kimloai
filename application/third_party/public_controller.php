@@ -172,9 +172,8 @@ class Public_controller extends CI_Controller {
         $data['cats'] = $list_cats;
 
 
-        $data['product_noibat'] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'status', 'p_image_thumb', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, null, null, array('id' => 'desc'), array('max' => 10, 'begin' => 0));
-        // print_r($data['product_noibat']->result() );
-//		$data['kts'] = $this->kt->getList(null, null, array('id' => 'desc'), array('max' => 30, 'begin' => 0))->result();
+        $data['product_noibat'] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'status', 'p_image_thumb', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, 1 ,null,1, null, array('id' => 'desc'), array('max' => 10, 'begin' => 0));
+        $data['product_khuyenmai'] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'status', 'p_image_thumb', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, null ,1,1, null, array('id' => 'desc'), array('max' => 10, 'begin' => 0));
         return $this->load->view('common/left', $data, TRUE);
     }
 

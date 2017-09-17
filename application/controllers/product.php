@@ -21,7 +21,7 @@ class Product extends Public_controller {
 		$data['render_path'] = array('Trang chủ' => site_url('trang-chu'), 'Danh sách sản phẩm' => site_url('#'));
 		$this->site_title = 'Danh Sách Sản phẩm';
 		
-		$data['products'] = $this->product->get_all_pro(array('id','p_name','p_name_alias', 'status','p_image_thumb','catid','gia','khuyenmai','noibat','p_description'), null, null, null, null, array('id' => 'desc'), array('max' => 30, 'begin' => 0));
+		$data['products'] = $this->product->get_all_pro(array('id','p_name','p_name_alias', 'status','p_image_thumb','catid','gia','khuyenmai','noibat','p_description'), null, null, null,null,null, null, array('id' => 'desc'), array('max' => 30, 'begin' => 0));
 		
 		if($this->input->is_ajax_request())
 		{
@@ -48,7 +48,7 @@ class Product extends Public_controller {
 		
 		$data['pro_view'] = $this->product->get_one_pro($id);
 		
-		$data['other_products'] = $this->product->get_all_pro(array('id','p_name','p_name_alias', 'status','p_image_thumb','catid','gia','khuyenmai','noibat','p_description'), $catid, null, null, array('id !=' => $id), array('id' => 'desc'), array('max' => 10, 'begin' => 0));
+		$data['other_products'] = $this->product->get_all_pro(array('id','p_name','p_name_alias', 'status','p_image_thumb','catid','gia','khuyenmai','noibat','p_description'), $catid, null, null,null,null, array('id !=' => $id), array('id' => 'desc'), array('max' => 10, 'begin' => 0));
 		
 				
 		$this->render($this->load->view('product/page_view',$data, TRUE),'3col');
@@ -113,7 +113,7 @@ class Product extends Public_controller {
 		$this->ajax_pagination->initialize($config);
 		$data['page'] = $this->ajax_pagination->create_links('loadUrl', 'product_list');
 		
-		$data['products'] = $this->product->get_all_pro(array('id','p_name','p_name_alias', 'status','p_image_thumb','catid','gia','khuyenmai','noibat','p_description'), $id, null, null, null, array('id' => 'desc'), array('max' => $config['per_page'], 'begin' => $this->uri->segment(4)));
+		$data['products'] = $this->product->get_all_pro(array('id','p_name','p_name_alias', 'status','p_image_thumb','catid','gia','khuyenmai','noibat','p_description'), $id, null, null, null, null, null, array('id' => 'desc'), array('max' => $config['per_page'], 'begin' => $this->uri->segment(4)));
 		
 		if($this->input->is_ajax_request())
 		{
@@ -127,36 +127,5 @@ class Product extends Public_controller {
 			
 	}
 	
-	//public function search()
-//	{
-//		$keyword = $this->util->alias($this->input->get('key'));
-//		$page = (int)$this->input->get('page');
-//		
-//		$data['render_path'] = array('Trang chủ' => site_url('trang-chu'), 'Kết quả tìm kiếm' => '');
-//		$this->site_title = 'Sản phẩm | Kết quả tìm kiếm';
-//		// Config pagination
-//		$config['base_url'] = $this->index.'tim-kiem/?key=' . $keyword;
-//		$config['total_rows'] = $this->product->total_product(null, $keyword, null);
-//		$config['per_page'] = $this->per_page;
-//		$config['suffix'] = '.html';
-//		$config['query_string_segment'] = 'page';
-//		$config['page_query_string'] = TRUE;
-//		$config['num_links'] = 10;
-//		$this->ajax_pagination->initialize($config);
-//		$data['page'] = $this->ajax_pagination->create_links('loadUrl', 'product_list');
-//		$data['products'] = $this->product->get_all_pro(array('id','p_name','p_name_alias', 'status','p_image_thumb','catid'), null, $keyword, null, null, array('id' => 'desc'), array('max' => $config['per_page'], 'begin' => $page));
-//		
-//		if($this->input->is_ajax_request())
-//		{
-//			// If request by ajax that...
-//			$this->load->view('product/search_result_ajax', $data);
-//			
-//		} else {
-//			
-//			$this->render($this->load->view('product/search_result', $data, TRUE), '3col');
-//		}
-//		
-//	}
+	
 }
-// End file
-// Local applocation/controllers/product.php

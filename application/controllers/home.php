@@ -25,21 +25,12 @@ class Home extends Public_controller {
         $cats = $this->category->get_category_where(array('show_home' => 1), array('ord' => 'asc'), null)->result();
         if ($cats) {
             foreach ($cats as $cat) {
-                $data['product_categorys'][$cat->catid] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'p_image', 'p_image_thumb', 'status', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, null, array('status' => 1, 'catid' => $cat->catid), array('id' => 'DESC'), array('max' => 8, 'begin' => 0))->result();
+                $data['product_categorys'][$cat->catid] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'p_image', 'p_image_thumb', 'status', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, null, null, null, array('status' => 1, 'catid' => $cat->catid), array('id' => 'DESC'), array('max' => 8, 'begin' => 0))->result();
             }
         }
 
         $data['categorys'] = $cats;
-        // Lay nhung sp thuoc danh muc hien thi o trang chu
-        $cats_service = $this->category_service->get_category_where(array('show_home' => 1), array('catid' => 'desc'), null)->result();
-        if ($cats_service) {
-            foreach ($cats_service as $cat) {
-
-                $data['service_categorys'][$cat->catid] = $this->service->get_all_pro(array('id', 'p_name', 'p_name_alias', 'p_image', 'p_image_thumb', 'status', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, null, array('status' => 1, 'catid' => $cat->catid), array('id' => 'DESC'), array('max' => 8, 'begin' => 0))->result();
-            }
-        }
-
-        $data['categorys_service'] = $cats_service;
+       
         //get news show homepage
         $cats_news = $this->cat_news->get_cat_news_where(array('active' => 1, 'home' => 1), array('ord' => 'asc'), null)->result();
         if ($cats_news) {
