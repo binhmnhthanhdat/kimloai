@@ -34,6 +34,7 @@
 <?php if(!empty($categorys_service)) : ?>
 <?php foreach($categorys_service as $cat) : ?>
 <div class="service_home">
+    
 	<h3><a href="<?=site_url('xem-danh-muc/' . $cat->catid . '-' . $cat->alias);?>" title="<?=$cat->cat_name;?>"><?=$cat->cat_name;?></a></h3>
 	<div>
         <?php if(!empty($service_categorys[$cat->catid])) : ?>

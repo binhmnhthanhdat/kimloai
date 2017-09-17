@@ -3,6 +3,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow" />
+<meta name="copyright" content="<?php echo $this->site_title;?>" />
+<meta http-equiv="content-language" content="vi" />
+<link rel="alternate" href="<? echo base_url();?>" hreflang="vi-vn" />
+<meta name="Author" content="<?php echo $this->site_title;?>" />
+<meta name="og:title" content="<?php echo $this->site_title;?>"/>
+<meta name="og:description" content="<?php echo $this->meta_desc;?>"/>
+<meta name="og:url" content="<? echo base_url();?>">
+ 
+<meta name="DC.Title" content="<?php echo $this->site_title;?>" />
+<meta name="DC.Creator" content="<?php echo $this->site_title;?>" />
+<meta name="DC.Date" content="2013-31-3" />
+<meta name="DC.Format" scheme="DCMIType" content="Text" />
+<meta name="DC.Identifier" content="<? echo base_url();?>" />
+<meta name="DC.Type" content="text/html" />
+<meta name="DC.Description" content="<?php echo $this->meta_desc;?>" />
+<link href="<?php echo base_url(uri_string()); ?>"  rel="canonical" />
+<link rel="publisher" href="https://plus.google.com/u/0/+ThangPV/posts"/>
+<link rel="shortcut icon" href="<? echo base_url();?>favicon.ico" />
+<link href="tham-tu.com/rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
 <title><?php echo $this->site_title;?></title>
 <meta name="keywords" content="<?php echo $this->meta_key;?>" />
 <meta name="description" content="<?php echo $this->meta_desc;?>" />
@@ -38,7 +59,7 @@ $kqsetting=$setting->row();
 <div id="container">
     <!--begin menu_top-->
 	<div id="menu_top">
-		<p><? echo $kqsetting->site_name;?></p>
+		<h1 style = "display:inline;float: left; font-weight: bold;margin-top: 7px;font-size: 14px"><?php echo $this->site_title;?></h1>
 		<div>
 			<ul>
 			</ul>

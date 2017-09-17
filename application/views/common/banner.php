@@ -44,10 +44,13 @@ if($layhotro->num_rows()>0)
 			<h2><?=$cat->name;?></h2>
 			<?=$cat->contents;?>
 		</div>
-		<img src="<? echo base_url();?><?=$cat->img;?>" width="980" height="300"/>
+		<img src="<? echo base_url();?><?=$cat->img;?>" width="725" height="300"/>
 	</div>
     <?php endforeach;?>
 	
+</div>
+<div>
+    <img src="<? echo base_url();?>images/lienhe.png" width="250" height="260"/>
 </div>
 <?php endif;?>
 <script type="text/javascript">
