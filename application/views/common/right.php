@@ -63,12 +63,13 @@
                 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/asset/css/display.css" media="all">
             </div>
 
-
+            <?php if(!empty($cats)) : ?>
+            <?php foreach($cats as $cat) : ?>
             <div id="block-39" class="block-SidebarNews core-block">
                 <div class="col-md-12 col-sm-6 col-xs-12">
                     <div class="block-title">
-                        <a title="CHÍNH SÁCH" href="#/chinh-sach-ban-hang/">
-                            <span class="block-title-inner">CHÍNH SÁCH</span>
+                        <a title="<?php echo $cat->name;?>" href="<?php echo site_url('danh-muc-tin-tuc/' . $cat->id . '-' . $cat->alias); ?>">
+                            <span class="block-title-inner"><?php echo $cat->name;?></span>
                         </a>
                     </div>
                     <div class="sidebar-box-content block-content">
@@ -83,215 +84,24 @@
                                     <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho-a/" title="MẶT BẰNG CĂN HỘ">
                                         MẶT BẰNG CĂN HỘ                </a>
                                     <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...  
+                                        <? //word_limiter($new->intro, 10); ?>
                                     </div>
                                 </div>
                                 <span class="clear"></span>
                             </li>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/mat-bang-can-ho/" title="#/mat-bang-can-ho/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN 1/3/2017" title="TIẾN ĐỘ DỰ ÁN 1/3/2017">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho/" title="TIẾN ĐỘ DỰ ÁN 1/3/2017">
-                                        TIẾN ĐỘ DỰ ÁN 1/3/2017                </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/" title="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017" title="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/" title="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017">
-                                        TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017                </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/" title="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN 15/3/2017" title="TIẾN ĐỘ DỰ ÁN 15/3/2017">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/" title="TIẾN ĐỘ DỰ ÁN 15/3/2017">
-                                        TIẾN ĐỘ DỰ ÁN 15/3/2017                </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
+                            
                         </ul>
                     </div>
                     <span class="clear"></span>
                 </div>
                 <span class="clear"></span>
-                <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/asset/css/display(1).css" media="all">
             </div>
-            <div id="block-40" class="block-SidebarNews core-block">
-                <div class="col-md-12 col-sm-6 col-xs-12">
-                    <div class="block-title">
-                        <a title="TIẾN ĐỘ" href="#/tien-do/">
-                            <span class="block-title-inner">TIẾN ĐỘ</span>
-                        </a>
-                    </div>
-                    <div class="sidebar-box-content block-content">
-                        <ul>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/mat-bang-can-ho-a/" title="#/mat-bang-can-ho-a/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG CĂN HỘ" title="MẶT BẰNG CĂN HỘ">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho-a/" title="MẶT BẰNG CĂN HỘ">
-                                        MẶT BẰNG CĂN HỘ                </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/mat-bang-can-ho/" title="#/mat-bang-can-ho/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN 1/3/2017" title="TIẾN ĐỘ DỰ ÁN 1/3/2017">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho/" title="TIẾN ĐỘ DỰ ÁN 1/3/2017">
-                                        TIẾN ĐỘ DỰ ÁN 1/3/2017                </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/" title="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017" title="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/" title="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017">
-                                        TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017                </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/" title="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN 15/3/2017" title="TIẾN ĐỘ DỰ ÁN 15/3/2017">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/" title="TIẾN ĐỘ DỰ ÁN 15/3/2017">
-                                        TIẾN ĐỘ DỰ ÁN 15/3/2017                </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <span class="clear"></span>
-                </div>
-                <span class="clear"></span>						
-            </div>
-            <div id="block-29" class="block-SidebarNews core-block">
-                <div class="col-md-12 col-sm-6 col-xs-12">
-                    <div class="block-title">
-                        <a title="Tin tức" href="#/tin-tuc/">
-                            <span class="block-title-inner">Tin tức</span>
-                        </a>
-                    </div>
-                    <div class="sidebar-box-content block-content">
-                        <ul>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/mat-bang-can-ho-a/" title="#/mat-bang-can-ho-a/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG CĂN HỘ" title="MẶT BẰNG CĂN HỘ">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho-a/" title="MẶT BẰNG CĂN HỘ">
-                                        MẶT BẰNG CĂN HỘ                </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/mat-bang-toa-s3/" title="#/mat-bang-toa-s3/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG TÒA S3" title="MẶT BẰNG TÒA S3">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-toa-s3/" title="MẶT BẰNG TÒA S3">
-                                        MẶT BẰNG TÒA S3                </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/mat-bang-toa-s2/" title="#/mat-bang-toa-s2/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG TOÀ S2" title="MẶT BẰNG TOÀ S2">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-toa-s2/" title="MẶT BẰNG TOÀ S2">
-                                        MẶT BẰNG TOÀ S2                </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
-                            <li class="SidebarNews-item clearfix">
-                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/mat-bang-toa-s1/" title="#/mat-bang-toa-s1/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG TÒA S1 " title="MẶT BẰNG TÒA S1 ">
-                                    </a>
-                                </div>
-                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-toa-s1/" title="MẶT BẰNG TÒA S1 ">
-                                        MẶT BẰNG TÒA S1                 </a>
-                                    <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
-                                    </div>
-                                </div>
-                                <span class="clear"></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <span class="clear"></span>
-                </div>
-                <span class="clear"></span>						
-            </div>
+            <?php endforeach; ?>
+            <?php endif; ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/asset/css/display(1).css" media="all">
+
         </div>
     </div>
 </div>
-
 

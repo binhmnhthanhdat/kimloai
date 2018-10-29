@@ -6,26 +6,59 @@
             <div class="   block_area_3 block_area  area_main-menu sortable clearfix">
                 <div id="block-3" class="block-menu core-block">
                     <div class="block-content">
+                        <?php if(!empty($cats)) : ?>
                         <ul class="clearfix">
-                            <li class="active  menu-item-1" par="1"><a href="#/">Tổng quan</a></li>
-                            <li class="menu-item-2" par="2"><a href="#/vi-tri-du-an/">Vị trí</a></li>
-                            <li class="menu-item-3" par="3"><a href="#/tien-ich-du-an/">Tiện ích</a></li>
-                            <li class="menu-item-4" par="4">
-                                <a href="#/mat-bang-can-ho-a/">Thiết kế</a>
+                            <?php foreach($cats as $cat) : ?>
+                            <li class="menu-item-<?= $cat['id']; ?>" par="<?= $cat['id']; ?>">
+                                <a href="<?php 
+                                if($cat['type']==0){
+                                echo site_url('danh-muc-tin-tuc/' . $cat['id'] . '-' . $cat['alias']);
+                                }
+                                else if($cat['type']==1){
+                                echo base_url().'san-pham';//sanpham
+                                }else if($cat['type']==2){
+                                echo site_url('gioi-thieu/' . $cat['id'] . '-' . $cat['alias']);
+                                }else if($cat['type']==3){
+                                echo base_url().'dich-vu'; //dichvu
+                                }else if($cat['type']==4){
+                                echo base_url().'lien-he';
+                                }
+                   ?>"><?= $cat['name']; ?></a>
+                                <?php
+                                if(count($cat['cat_sub'])>0)
+                                {
+                                ?>
                                 <span class="menu-arrow menu-arrow-1" par="1"></span>
                                 <ul class="sub-menu sub-menu-1" par="1">
-                                    <li class="menu-item-5" par="5"><a href="#/mat-bang-toa-s1/">TÒA S1 </a></li>
-                                    <li class="menu-item-6" par="6"><a href="#/mat-bang-toa-s2/">TOÀ S2</a></li>
-                                    <li class="menu-item-7" par="7"><a href="#/mat-bang-toa-s3/">TÒA S3</a></li>
+                                    <?php foreach($cat['cat_sub'] as $cat_sub) : ?>
+                                    <li class="menu-item-<?php echo $cat_sub->id;?>" par="<?php echo $cat_sub->id;?>">
+                                        <a href="<?php 
+                                                if($cat_sub->type == 0){
+                                           echo site_url('danh-muc-tin-tuc/' . $cat_sub->id . '-' . $cat_sub->alias);
+                                           }
+                                           else if($cat_sub->type == 1){echo base_url();
+                                           }else if($cat_sub->type == 2){
+                                           echo site_url('gioi-thieu/' . $cat_sub->id . '-' . $cat_sub->alias);
+                                           }else if($cat_sub->type == 3){
+                                           echo base_url('contact');
+                                           }else if($cat_sub->type == 4){
+                                           echo base_url('san-pham');
+                                   }
+                                   ?>"><?php echo $cat_sub->name;?> </a>
+                                    </li>
+                                   <?php endforeach; ?>
                                 </ul>
+                                <?php
+                                 }
+                                ?>
                             </li>
-                            <li class="menu-item-8" par="8"><a href="#/chinh-sach-ban-hang/">Chính sách</a></li>
-                            <li class="menu-item-9" par="9"><a href="#/tien-do/">Tiến độ</a></li>
-                            <li class="menu-item-10" par="10"><a href="#/tin-tuc/">Tin tức</a></li>
+                            <?php endforeach; ?>
                         </ul>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+ 

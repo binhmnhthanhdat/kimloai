@@ -127,38 +127,20 @@ class Public_controller extends CI_Controller {
         return $this->load->view('common/banner', $data, TRUE);
     }
 
-    public function left() {
-
-        $data = array();
-        $cats = $this->category->get_category_where(null, array('ord' => 'asc'), null)->result();
-
-        if ($cats) {
-
-            foreach ($cats as $cat) {
-                if ($cat->parent == 0) {
-                    $list_cats[$cat->catid] = array();
-                    $list_cats[$cat->catid]['catid'] = $cat->catid;
-                    $list_cats[$cat->catid]['cat_name'] = $cat->cat_name;
-                    $list_cats[$cat->catid]['alias'] = $cat->alias;
-                    $list_cats[$cat->catid]['show_home'] = $cat->show_home;
-                    $list_cats[$cat->catid]['parent'] = $cat->parent;
-                    $list_cats[$cat->catid]['cat_sub'] = array();
-                    $list_cats[$cat->catid]['cat_sub'] = $this->category->get_category_where(array('parent' => $cat->catid), array('ord' => 'asc'), null)->result();
-                    ;
-                }
-            }
-        }
-        $data['cats'] = $list_cats;
-
-
-        $data['product_noibat'] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'status', 'p_image_thumb', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, 1, null, 1, null, array('id' => 'desc'), array('max' => 10, 'begin' => 0));
-        $data['product_khuyenmai'] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'status', 'p_image_thumb', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, null, 1, 1, null, array('id' => 'desc'), array('max' => 10, 'begin' => 0));
-        return $this->load->view('common/left', $data, TRUE);
-    }
+    
 
     public function right() {
 
         $data = array();
+
+        $cats = $this->cat_news->get_cat_news_where(array('active' => 1, 'type' => 0), array('ord' => 'asc'), null)->result();
+       
+        if ($cats) {
+            foreach ($cats as $cat) {
+               $cat->news = $this->tin->getList(null, array('cat_id' => $cat->id), array('id' => 'desc'), array('max' => 30, 'begin' => 0))->result();
+            }
+        }
+        $data['cats'] = $cats;
         return $this->load->view('common/right', $data, TRUE);
     }
 
