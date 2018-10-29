@@ -1,64 +1,51 @@
-<!--begin support-->
- <?
-$sql="select * from hotro where active=1  order by ord asc";	
-$layhotro= $this->db->query($sql);
-if($layhotro->num_rows()>0)
- {
- ?>
-<div id="support">
-	<span></span>
-	<div>
-		<ul>
-         <?
-        foreach($layhotro->result()  as $kqlayhotro)
-		{
-            if($kqlayhotro->type==1)
-            {
-            ?>
-			<li><a href="ymsgr:sendim?<? echo $kqlayhotro->info;?>"><img src="http://opi.yahoo.com/online?u=<? echo $kqlayhotro->info;?>&m=g&t=5" border="0"><? echo $kqlayhotro->name;?></a></li>
-	    <?
-            }
-            else if($kqlayhotro->type==2)
-            {
-            ?>
-               <li class="skype"><a href="skype:<? echo $kqlayhotro->info;?>?call" style="padding-left: 15px;"><? echo $kqlayhotro->name;?></a></li>
-         <?
-            }
-        }
-        ?>
-        </ul>
-		<p>Hotline: <strong>091 9993683</strong></p>
-	</div>
-	<span class="last-child"></span>
+<div id="slide" class="  v-full-width ">
+    <div id="slide-inner" class="v-full-width">
+        <div class="   block_area_7 block_area  area_slide sortable clearfix">
+            <div id="block-25" class="block-Slide core-block">
+                <div class="slider" id="flex-slider-25">
+                    <div class="flexslider">
+                        <div class="flex-viewport" style="overflow: hidden; position: relative; height: 607px; display:none;">
+                            <?php if(!empty($cats)) :?>
+                            <ul class="slides" style="width: 1000%; transition-duration: 0s; transform: translate3d(-1903px, 0px, 0px);">
+                                <?php foreach($cats as $cat) :?>
+                                <li class="v-slide-item v-slide-item-3 clone" aria-hidden="true" style="width: 1903px; margin-right: 0px; float: left; display: block;">
+                                    <img src="<?php echo base_url();?><?=$cat->img;?>" alt="<?=$cat->name;?>" draggable="false"> 
+                                </li>
+                                
+                                <?php endforeach;?>
+                            </ul>
+                            <?php endif;?>
+                        </div>
+
+                        <ul class="flex-direction-nav">
+                            <li class="flex-nav-prev"><a class="flex-prev" href="#/#">Previous</a></li>
+                            <li class="flex-nav-next"><a class="flex-next" href="#/#">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                        $('#flex-slider-25 .flexslider').flexslider({
+                            animation: "slide",
+                            start: function (slider) {
+                                $('body').removeClass('loading');
+                            },
+                            pauseOnHover: true,
+                            direction: "horizontal",
+                            controlNav: true,
+                            slideshowSpeed: 4000,
+                            animationSpeed: 300,
+                            easing: "swing",
+                            animateHeight: true,
+                            smoothHeight: true
+                        });
+                    })
+
+                </script>
+            </div>
+        </div>
+    </div>
 </div>
-<?
-}
-?>
-<!--end support-->
-<?// echo "<pre>"; print_r($cats); echo "</pre>"; ?>
-<?php if(!empty($cats)) :?>
-<div id="presentation_container" class="pc_container">
-    <?php foreach($cats as $cat) :?>
-	<div class="pc_item">
-		<div class="desc">
-			<h2><?=$cat->name;?></h2>
-			<?=$cat->contents;?>
-		</div>
-		<img src="<? echo base_url();?><?=$cat->img;?>" width="725" height="300"/>
-	</div>
-    <?php endforeach;?>
-	
-</div>
-<div>
-    <?php
-        $sql = "select * from images ";
-        $images = $this->db->query($sql);
-        $kqimage = $images->row();
-        ?>
-    <img src="<? echo base_url();?><?php if (isset($kqimage->img)) { echo (($kqimage->img));} ?>" width="250" height="262"/>
-</div>
-<?php endif;?>
-<script type="text/javascript">
-	presentationCycle.init();
-</script>
-<!--begin content_page-->
+<span class="clear"></span>
+<span class="clear"></span>

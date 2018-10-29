@@ -79,7 +79,6 @@ class Public_controller extends CI_Controller {
         $data['header'] = $this->headers();
         $data['menu'] = $this->menu();
         $data['banner'] = $this->banner();
-        $data['left'] = $this->left();
         $data['right'] = $this->right();
         $data['footer'] = $this->footer();
         $data['content'] = $content;
@@ -90,26 +89,6 @@ class Public_controller extends CI_Controller {
     public function headers() {
 
         $data = array();
-
-        $cats = $this->category->get_category_where(null, null, null)->result();
-
-        if ($cats) {
-
-            foreach ($cats as $cat) {
-                if ($cat->parent == 0) {
-                    $list_cats[$cat->catid] = array();
-                    $list_cats[$cat->catid]['catid'] = $cat->catid;
-                    $list_cats[$cat->catid]['cat_name'] = $cat->cat_name;
-                    $list_cats[$cat->catid]['alias'] = $cat->alias;
-                    $list_cats[$cat->catid]['show_home'] = $cat->show_home;
-                    $list_cats[$cat->catid]['parent'] = $cat->parent;
-                    $list_cats[$cat->catid]['cat_sub'] = array();
-                    $list_cats[$cat->catid]['cat_sub'] = $this->category->get_category_where(array('parent' => $cat->catid), array('catid' => 'asc'), null)->result();
-                    ;
-                }
-            }
-        }
-        $data['cats'] = $list_cats;
         return $this->load->view('common/headers', $data, TRUE);
     }
 
@@ -172,20 +151,15 @@ class Public_controller extends CI_Controller {
         $data['cats'] = $list_cats;
 
 
-        $data['product_noibat'] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'status', 'p_image_thumb', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, 1 ,null,1, null, array('id' => 'desc'), array('max' => 10, 'begin' => 0));
-        $data['product_khuyenmai'] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'status', 'p_image_thumb', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, null ,1,1, null, array('id' => 'desc'), array('max' => 10, 'begin' => 0));
+        $data['product_noibat'] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'status', 'p_image_thumb', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, 1, null, 1, null, array('id' => 'desc'), array('max' => 10, 'begin' => 0));
+        $data['product_khuyenmai'] = $this->product->get_all_pro(array('id', 'p_name', 'p_name_alias', 'status', 'p_image_thumb', 'catid', 'gia', 'khuyenmai', 'noibat', 'p_description'), null, null, null, 1, 1, null, array('id' => 'desc'), array('max' => 10, 'begin' => 0));
         return $this->load->view('common/left', $data, TRUE);
     }
 
     public function right() {
 
         $data = array();
-
-        //	$data['cats'] = $this->category->get_category_where(null, null, null)->result();
-//		$data['news'] = $this->tin->getList(null, null, array('id' => 'desc'), array('max' => 30, 'begin' => 0))->result();
-//		$data['kts'] = $this->kt->getList(null, null, array('id' => 'desc'), array('max' => 30, 'begin' => 0))->result();
-//		return $this->load->view('common/right', $data, TRUE);	
-//		
+        return $this->load->view('common/right', $data, TRUE);
     }
 
     public function footer() {

@@ -1,0 +1,54 @@
+@media only screen and (min-width: 1200px){
+     
+}
+
+
+@media only screen and (max-width: 1199px) and (min-width: 992px){
+     
+} 
+
+@media only screen and (max-width: 991px) and (min-width: 768px){
+     
+}
+@media only screen and  (max-width: 767px) and (min-width: 400px){
+     
+}
+
+
+@media only screen and (max-width: 399px){
+     
+}
+
+
+@media only screen and (max-width: 991px){
+     
+}
+
+
+@media only screen and (max-width: 700px){
+    .v-popup-form div.v-form {
+        width: 94%;
+        left: 3%;
+        top: 10%;
+    }
+    
+    .v-popup-form form.v-form {
+        padding: 10px;
+    }
+    
+    .v-popup-form input.v-form-field-type-text {}
+    
+    .v-popup-form .v-form-item-content {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:991px){
+    .v-form-content {
+        padding: 33px;
+    }
+    div#wrap-cpr .block-title{
+        line-height:20px;
+    }
+   
+}

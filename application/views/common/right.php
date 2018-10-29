@@ -1,90 +1,297 @@
-<script type="text/javascript">
-	function searchPro()
-	{
-		//contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-		var key = $('#keyword').val();
-		if(key =='')
-		{
-			alert('Vui lòng nhập từ khóa cần tìm');
-			$('#keyword').focus();
-			return false;
-			
-		} else if(key.length < 4)
-		{
-			alert('Bạn nhập ít nhất 4 ký tự');
-			$('#keyword').focus();
-			return false;
-		} else if(key =='Nhập từ cần tìm')
-		{
-			alert('Vui lòng nhập từ khóa cần tìm');
-			$('#keyword').focus();
-			return false;
-		} else {
-			var url = '<?=$this->index;?>';
-			window.location.href= url + 'tim-kiem/?key=' + encodeURIComponent(key);
-		}
-	}
-</script>
-<div id="right">
-        	<div id="block_search">
-            	<div style="margin:5px 13px 0px 10px; float:left;"><a href="javascript:void(0);" onclick="searchPro(); return false;" title="Nhấn để tìm"><img src="<?=base_url();?>template/images/system_search.png" width="22" height="22" border="0"/></a></div>
-                <div style="float:left;"><input type="text" id="keyword" value="Nhập từ cần tìm" style="width:140px; border:none; border:0; margin-top:8px; color:#a18e8e; font-size:11px;"/></div>
-            </div><!--End block search-->
-            
-            <div id="block_category">
-            	<div class="category_title">Danh mục sản phẩm</div>
-                <div class="category_list">
-                	<?php if(!empty($cats)) :?>
-                	<ul id="list_cat">
-                    	<?php foreach($cats as $cat) :?>
-                    	<li><a href="<?=site_url('xem-danh-muc/' . $cat->catid . '-' . $cat->alias);?>" title="<?=$cat->cat_name;?>"><?=$cat->cat_name;?></a></li>
-                        <?php endforeach;?>
-                    </ul>
-                    <?php endif;?>
+<div id="sidebar" class="fr v-col-lg-3 v-col-md-4 v-col-sm-4 v-col-xs-12 v-col-tx-12">
+    <div class="inner v-lg-ml-20 v-md-ml-20 v-sm-ml-20">
+        <div class="core-block clearfix">
+            <div class="sidebar-hotline clearfix">
+                <div class="sidebar-hotline-image fl">
+                    <img alt="hotline title" src="<?php echo base_url(); ?>/asset/dong_nam_duoc_bang_thai_tu_van.jpg">
                 </div>
-                <div class="category_bottom"></div>
-            </div><!--End block category-->
-            
-            <div id="block_category">
-            	<div class="category_title">tin tức</div>
-                <div class="category_list">
-                	<?php if(!empty($news)) : ?>
-                    <ul id="list_news">
-                    	<?php foreach($news as $new) : ?>
-                    	<li>
-                        	<span style="float:left; font-size:11px; padding-bottom:5px;"><a href="<?=site_url('xem-tin/' . $new->id .'-'. $this->util->alias($new->title));?>" title="<?=$new->title;?>" style="color:#662693; font-weight:bold; font-size:12px;"><?=$new->title;?></a> (Đăng ngày: <?php echo mdate('%d/%m', $new->create_date);?>)</span>
-                            <div style="float:left;">
-                            	<img src="<?=base_url();?><?=$new->image;?>" width="50" height="50" style="float:left; border:1px solid #cccccc; margin-right:7px;"/>
-                                <?=word_limiter($new->intro, 10);?>
-                            </div>
-                        </li>
-                       <?php endforeach;?>
-                    </ul>
-                    <?php endif;?>
-                    <div class="more" style="float:left; text-align:right; width:168px; font-size:11px; font-weight:bold;"><img src="<?=base_url();?>template/images/arrow.png"/> <a href="<?=site_url('tin-tuc');?>" title="Xem thêm">Xem thêm</a></div>
+                <div class="sidebar-hotline-text fr">
+                    <div class="sidebar-hotline-title">
+                        Hotline
+                    </div>
+                    <div class="sidebar-hotline-number">
+                        <a href="tel:0936.422.689">
+                            0936.422.689
+                        </a>
+                    </div>
                 </div>
-                <div class="category_bottom"></div>
-            </div><!--End block news-->
-            
-            <div id="block_category">
-            	<div class="category_title">kiến thức tiêu dùng</div>
-                <div class="category_list">
-                	<?php if(!empty($kts)) : ?>
-                    <ul id="list_news">
-                    	<?php foreach($kts as $new) : ?>
-                    	<li>
-                        	<span style="float:left; font-size:11px; padding-bottom:5px;"><a href="<?=site_url('xem-kien-thuc/' . $new->id .'-'. $this->util->alias($new->title));?>" title="<?=$new->title;?>" style="color:#662693; font-weight:bold; font-size:12px;"><?=$new->title;?></a> (Đăng ngày: <?php echo mdate('%d/%m', $new->create_date);?>)</span>
-                            <div style="float:left;">
-                            	<img src="<?=base_url();?><?=$new->image;?>" width="50" height="50" style="float:left; border:1px solid #cccccc; margin-right:7px;"/>
-                                <?=word_limiter($new->intro, 10);?>
-                            </div>
-                        </li>
-                       <?php endforeach;?>
-                    </ul>
-                    <?php endif;?>
-                    <div class="more" style="float:left; text-align:right; width:168px; font-size:11px; font-weight:bold;"><img src="<?=base_url();?>template/images/arrow.png"/> <a href="<?=site_url('kien-thuc');?>" title="Xem thêm">Xem thêm</a></div>
+            </div>
+        </div>
+        <div class="   block_area_4 block_area  area_sidebar sortable clearfix">
+            <div id="block-34" class="block-Form core-block">
+                <div class="block-title">
+                    <span class="block-title-inner">Nhận báo giá</span>
                 </div>
-                <div class="category_bottom"></div>
-            </div><!--End block Kien thuc tieu dung-->
-            	
-        </div><!--End right-->
+                <div class="block-content">
+                    <div class="wrap-v-form">
+                        <div class="v-form-title">Nhận thông tin dự án</div>
+                        <div class="v-form-description"></div>
+                        <div class="v-form-content clearfix">
+                            <form class="v-form" method="POST" par="1">
+                                <input type="hidden" name="form_id" value="1">  
+                                <input type="hidden" name="type" value="order"> 
+                                <input type="hidden" name="url" value="#/">  
+                                <div class="v-form-item v-form-item-name v-form-item-text">
+                                    <div class="v-form-item-title">Họ và tên <span class="v-form-require"> * </span></div>
+                                    <div class="v-form-item-content">
+                                        <input type="text" required="" class="v-form-field-type-text form-text" placeholder="Họ và tên" value="" name="name">
+                                    </div>
+                                </div>
+                                <div class="v-form-item v-form-item-phone v-form-item-text">
+                                    <div class="v-form-item-title">Số điện thoại <span class="v-form-require"> * </span></div>
+                                    <div class="v-form-item-content">
+                                        <input type="text" required="" class="v-form-field-type-text form-text" placeholder="Số điện thoại" value="" name="phone">
+                                    </div>
+                                </div>
+                                <div class="v-form-item v-form-item-email v-form-item-text">
+                                    <div class="v-form-item-title">Email <span class="v-form-require"> * </span></div>
+                                    <div class="v-form-item-content">
+                                        <input type="text" required="" class="v-form-field-type-text form-text" placeholder="Email" value="" name="email">
+                                    </div>
+                                </div>
+                                <div class="v-form-item v-form-item-submit">
+                                    <div class="v-form-item-title"></div>
+                                    <div class="v-form-item-content">
+                                        <input name="v-submit" class="form-submit" type="submit" value="Gửi">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <script></script>
+                </div>
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/asset/css/display.css" media="all">
+            </div>
+
+
+            <div id="block-39" class="block-SidebarNews core-block">
+                <div class="col-md-12 col-sm-6 col-xs-12">
+                    <div class="block-title">
+                        <a title="CHÍNH SÁCH" href="#/chinh-sach-ban-hang/">
+                            <span class="block-title-inner">CHÍNH SÁCH</span>
+                        </a>
+                    </div>
+                    <div class="sidebar-box-content block-content">
+                        <ul>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/mat-bang-can-ho-a/" title="#/mat-bang-can-ho-a/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG CĂN HỘ" title="MẶT BẰNG CĂN HỘ">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho-a/" title="MẶT BẰNG CĂN HỘ">
+                                        MẶT BẰNG CĂN HỘ                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/mat-bang-can-ho/" title="#/mat-bang-can-ho/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN 1/3/2017" title="TIẾN ĐỘ DỰ ÁN 1/3/2017">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho/" title="TIẾN ĐỘ DỰ ÁN 1/3/2017">
+                                        TIẾN ĐỘ DỰ ÁN 1/3/2017                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/" title="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017" title="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/" title="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017">
+                                        TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/" title="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN 15/3/2017" title="TIẾN ĐỘ DỰ ÁN 15/3/2017">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/" title="TIẾN ĐỘ DỰ ÁN 15/3/2017">
+                                        TIẾN ĐỘ DỰ ÁN 15/3/2017                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/asset/css/display(1).css" media="all">
+            </div>
+            <div id="block-40" class="block-SidebarNews core-block">
+                <div class="col-md-12 col-sm-6 col-xs-12">
+                    <div class="block-title">
+                        <a title="TIẾN ĐỘ" href="#/tien-do/">
+                            <span class="block-title-inner">TIẾN ĐỘ</span>
+                        </a>
+                    </div>
+                    <div class="sidebar-box-content block-content">
+                        <ul>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/mat-bang-can-ho-a/" title="#/mat-bang-can-ho-a/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG CĂN HỘ" title="MẶT BẰNG CĂN HỘ">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho-a/" title="MẶT BẰNG CĂN HỘ">
+                                        MẶT BẰNG CĂN HỘ                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/mat-bang-can-ho/" title="#/mat-bang-can-ho/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN 1/3/2017" title="TIẾN ĐỘ DỰ ÁN 1/3/2017">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho/" title="TIẾN ĐỘ DỰ ÁN 1/3/2017">
+                                        TIẾN ĐỘ DỰ ÁN 1/3/2017                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/" title="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017" title="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/can-ho-ch4-102m2-chung-cu-a10-nam-trung-yen/" title="TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017">
+                                        TIẾN ĐỘ DỰ ÁN THÁNG 13/2/2017                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/" title="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="TIẾN ĐỘ DỰ ÁN 15/3/2017" title="TIẾN ĐỘ DỰ ÁN 15/3/2017">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/can-ho-ch2-76m2-chung-cu-a10-nam-trung-yen/" title="TIẾN ĐỘ DỰ ÁN 15/3/2017">
+                                        TIẾN ĐỘ DỰ ÁN 15/3/2017                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>						
+            </div>
+            <div id="block-29" class="block-SidebarNews core-block">
+                <div class="col-md-12 col-sm-6 col-xs-12">
+                    <div class="block-title">
+                        <a title="Tin tức" href="#/tin-tuc/">
+                            <span class="block-title-inner">Tin tức</span>
+                        </a>
+                    </div>
+                    <div class="sidebar-box-content block-content">
+                        <ul>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/mat-bang-can-ho-a/" title="#/mat-bang-can-ho-a/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG CĂN HỘ" title="MẶT BẰNG CĂN HỘ">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho-a/" title="MẶT BẰNG CĂN HỘ">
+                                        MẶT BẰNG CĂN HỘ                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/mat-bang-toa-s3/" title="#/mat-bang-toa-s3/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG TÒA S3" title="MẶT BẰNG TÒA S3">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-toa-s3/" title="MẶT BẰNG TÒA S3">
+                                        MẶT BẰNG TÒA S3                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/mat-bang-toa-s2/" title="#/mat-bang-toa-s2/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG TOÀ S2" title="MẶT BẰNG TOÀ S2">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-toa-s2/" title="MẶT BẰNG TOÀ S2">
+                                        MẶT BẰNG TOÀ S2                </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                            <li class="SidebarNews-item clearfix">
+                                <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
+                                    <a href="#/mat-bang-toa-s1/" title="#/mat-bang-toa-s1/">
+                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG TÒA S1 " title="MẶT BẰNG TÒA S1 ">
+                                    </a>
+                                </div>
+                                <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
+                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-toa-s1/" title="MẶT BẰNG TÒA S1 ">
+                                        MẶT BẰNG TÒA S1                 </a>
+                                    <div class="SidebarNews-item-text-des none">
+                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...                
+                                    </div>
+                                </div>
+                                <span class="clear"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>						
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["lTL2z"]); }
+
+__d("getRelayAPIRequestHandler",["requireCond","cr:696703"],(function(a,b,c,d,e,f){"use strict";__p&&__p();var g=b("cr:696703").v;function a(a){if(g){var b=g.getCallbackScheduler({keepCurrentPriority:!0}),c=a;a=function(){for(var a=arguments.length,d=new Array(a),e=0;e<a;e++)d[e]=arguments[e];b(function(){return c.apply(undefined,d)})}}return a}e.exports=a}),null);
