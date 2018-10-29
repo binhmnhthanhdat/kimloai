@@ -1,41 +1,56 @@
 <script type="text/javascript">
-        	function loadUrl(url, id)
-			{
-			 //alert("Fdfdf");
-				$('.' + id ).load(url);
-			}
-			
+    function loadUrl(url, id)
+    {
+        //alert("Fdfdf");
+        $('.' + id).load(url);
+    }
+
 </script>
-<!--begin product_page-->
-<div id="product_page">
-    <h3>
-        <?php foreach($render_path as $key => $val) : ?>
-            <a href="<?=$val;?>"> <?=$key;?> &nbsp;  &raquo; &nbsp; </a> 
-        <?php endforeach;?>
-    </h3>
-    <!--begin listnews_page-->
-    <?php if(!empty($news)) : ?> 
-    <div id="listnews_page">
-        <?php foreach($news as $new) : ?>
-    	<dl>
-    		<dt><a href="<?=site_url($url_view . $new->id .'-'. $this->util->alias($new->title));?>"><img width="140" height="100" src="<?=base_url();?><?=$new->image;?>" alt="<?=$new->title;?>"></a></dt>
-    		<dd>
-    			<h4><a href="<?=site_url($url_view . $new->id .'-'. $this->util->alias($new->title));?>"><?=$new->title;?></a></h4>
-    			<p><?=$new->intro;?></p>
-    
-    		</dd>
-    	</dl>
-    	<?php endforeach;?>					
-    	
+<div class="fl v-col-lg-9 v-col-md-8 v-col-sm-8 v-col-xs-12 v-col-tx-12" id="col2">
+    <div class="col2-content" style="">
+        <div class="bread-crumbs">
+            <div class="hcv-bread-crumb">
+                <?php foreach ($render_path as $key => $val) : ?>
+                    <a class="bread-crumb-item " href="<?= $val; ?>" title="<?= $key; ?>"><?= $key; ?></a>
+                    <span class="arrow">›</span>    		
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <h1 id="" class="block-title">
+            <span class="block-title-inner">
+                Tin tức
+            </span>
+        </h1>
+        <!-- Box tin -->
+        <?php if (!empty($news)) : ?> 
+            <?php foreach ($news as $new) : ?>
+                <article class="box box6 ">
+                    <div class="fl box6-item img v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-5 v-col-tx-12">
+                        <div class="box6-item-inner">
+                            <a href="<?= site_url($url_view . $new->id . '-' . $this->util->alias($new->title)); ?>" class="" title="<?= $new->title; ?>">
+                                <img src="<?= base_url(); ?><?= $new->image; ?>" title="<?= $new->title; ?>" alt="<?= $new->title; ?>">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="fr box6-item text v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-7 v-col-tx-12">
+                        <div class="box6-item-inner">
+                            <h3 class="title"><a href="<?= site_url($url_view . $new->id . '-' . $this->util->alias($new->title)); ?>" class="news-product-title" title="<?= $new->title; ?>"><?= $new->title; ?></a></h3>
+                            <span class="clear"></span>
+                            <div class="des">
+                                <?= $new->intro; ?>...
+                            </div>
+                            <div class="meta"> 10:29:15 AM - 25/05/2017</div>
+                            <span class="clear"></span>
+                            <div class="box-readmore box6-readmore none">
+                                <a href="<?= site_url($url_view . $new->id . '-' . $this->util->alias($new->title)); ?>">Xem thêm</a>
+                            </div>
+                        </div>
+                        <span class="clear"></span>
+                    </div>
+                    <span class="clear"></span>
+                </article>
+                <span class="clear"></span>
+            <?php endforeach; ?> 
+        <?php endif; ?>
     </div>
-    <!--end listnews_page-->
-    <?php endif;?>
 </div>
-<?php if(!empty($page)) :?>
-   <div class="pagination">
-	<div class="link">
-        <?php // echo $page;?>
-    </div>
-	</div><!--End pagination--> 
- <?php endif;?>  
- 

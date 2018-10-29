@@ -72,27 +72,32 @@
                             <span class="block-title-inner"><?php echo $cat->name;?></span>
                         </a>
                     </div>
+                    <?php
+                    if(count($cat->news)>0)
+                    {
+                    ?>
                     <div class="sidebar-box-content block-content">
                         <ul>
+                            <?php foreach($cat->news as $new) : ?>
                             <li class="SidebarNews-item clearfix">
                                 <div class="SidebarNews-item-image fl v-col-lg-4 v-col-md-4 v-col-sm-4 v-col-xs-4 v-col-tx-4">
-                                    <a href="#/mat-bang-can-ho-a/" title="#/mat-bang-can-ho-a/">
-                                        <img src="<?php echo base_url(); ?>/asset/can-ho-144m2-4.jpg" alt="MẶT BẰNG CĂN HỘ" title="MẶT BẰNG CĂN HỘ">
+                                    <a href="<?=site_url('xem-tin/' . $new->id .'-'. $this->util->alias($new->title));?>" title="<?php echo $new->title;?>">
+                                        <img src="<?=base_url();?><?=$new->image;?>" alt="<?php echo $new->title;?>" title="<?php echo $new->title;?>">
                                     </a>
                                 </div>
                                 <div class="SidebarNews-item-text fl v-col-lg-8 v-col-md-8 v-col-sm-8 v-col-xs-8 v-col-tx-8">
-                                    <a class="SidebarNews-item-text-a" href="#/mat-bang-can-ho-a/" title="MẶT BẰNG CĂN HỘ">
-                                        MẶT BẰNG CĂN HỘ                </a>
+                                    <a class="SidebarNews-item-text-a" href="<?=site_url('xem-tin/' . $new->id .'-'. $this->util->alias($new->title));?>" title="<?php echo $new->title;?>">
+                                       <?php echo $new->title;?>                </a>
                                     <div class="SidebarNews-item-text-des none">
-                                        Khu đô thị Nam Trung Yên là một trong những dự án tái định cư tập ...  
-                                        <? //word_limiter($new->intro, 10); ?>
+                                        <?=word_limiter($new->intro, 100);?>...
                                     </div>
                                 </div>
                                 <span class="clear"></span>
                             </li>
-                            
+                            <?php endforeach; ?>
                         </ul>
                     </div>
+                    <?php } ?>
                     <span class="clear"></span>
                 </div>
                 <span class="clear"></span>
@@ -104,4 +109,3 @@
         </div>
     </div>
 </div>
-

@@ -127,8 +127,6 @@ class Public_controller extends CI_Controller {
         return $this->load->view('common/banner', $data, TRUE);
     }
 
-    
-
     public function right() {
 
         $data = array();
